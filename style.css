@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  cursor: none;
+  background: #fafafa;
+  font-family: monospace;
+  color: #332e5b;
+}
+
+#cat, #mouse {
+  position: absolute;
+  font-size: 50px;
+  pointer-events: none;
+}
+
+#house {
+  position: absolute;
+  font-size: 200px;
+  pointer-events: none;
+}
+
+#cat { z-index: 2; }
+#mouse { z-index: 3; }
+#house { font-size: 150px; bottom: 10px; right: 10px; z-index: 1; }
+
+#score {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#info {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-size: 18px;
+    max-width: 50%;
+}
+
+
+

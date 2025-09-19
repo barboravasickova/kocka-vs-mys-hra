@@ -27,6 +27,21 @@ function catInHouse(x, y) {
     return x > rect.left && x < rect.right && y > rect.top && y < rect.bottom;
 }
 
+
+// kontrola, jestli myš je v domečku 2
+function isInHouseTwo(x, y) {
+    const rect = housetwo.getBoundingClientRect();
+    return x > rect.left && x < rect.right && y > rect.top && y < rect.bottom;
+}
+
+// kontrola, jestli kočka by byla v domečku
+function catInHouseTwo(x, y) {
+    const rect = housetwo.getBoundingClientRect();
+    return x > rect.left && x < rect.right && y > rect.top && y < rect.bottom;
+}
+
+
+
 // pohyb myši podle kurzoru
 document.addEventListener("mousemove", (event) => {
     mouseX = event.clientX;
@@ -49,7 +64,7 @@ function loop() {
 
     let dx = mouseX - catX;
     let dy = mouseY - catY;
-    let speed = 0.015;
+    let speed = 0.020;
 
     let newCatX = catX + dx * speed;
     let newCatY = catY + dy * speed;
@@ -59,12 +74,17 @@ function loop() {
         catY = newCatY;
     }
 
+    if (!catInHouseTwo(newCatX, newCatY)) {
+        catX = newCatX;
+        catY = newCatY;
+    }
+
     cat.style.transform = `translate(${catX}px, ${catY}px)`;
 
     const distance = Math.hypot(mouseX - catX, mouseY - catY);
 
     // kolize s myší a přičtení bodu
-    if (!caught && distance < 60 && !isInHouse(mouseX, mouseY)) {
+    if (!caught && distance < 60 && !isInHouse(mouseX, mouseY) && !isInHouseTwo(mouseX, mouseY)) {
     mouse.textContent = "💀";
     caught = true;
     points = 0;               // vynulujeme body
@@ -75,7 +95,7 @@ function loop() {
     if (!caught) {      // přičítáme body jen pokud myš není chycená
         addPoint();
     }
-    }, 100)
+    }, 1000)
 
 }
 

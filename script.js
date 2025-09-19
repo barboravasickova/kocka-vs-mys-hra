@@ -1,6 +1,8 @@
 let cat = document.getElementById("cat");
 let mouse = document.getElementById("mouse");
 const house = document.getElementById("house");
+const housetwo = document.getElementById("housetwo");
+const trap = document.getElementById("trap");
 
 let catX = 50;
 let catY = 50;
@@ -83,16 +85,17 @@ function loop() {
 
     const distance = Math.hypot(mouseX - catX, mouseY - catY);
 
-    // kolize s myší a přičtení bodu
+    // kolize s myší a vynulování
     if (!caught && distance < 60 && !isInHouse(mouseX, mouseY) && !isInHouseTwo(mouseX, mouseY)) {
     mouse.textContent = "💀";
     caught = true;
-    points = 0;               // vynulujeme body
+    points = 0;               
     score.textContent = "Body: " + points;
     }
 
+    // přičítání bodů
     setInterval(() => {
-    if (!caught) {      // přičítáme body jen pokud myš není chycená
+    if (!caught) {      
         addPoint();
     }
     }, 1000)

@@ -37,7 +37,7 @@ document.addEventListener("mousemove", (event) => {
 // reset myši po kliknutí
 document.addEventListener("click", () => {
     if (caught) {
-        mouse.textContent = "🐭";
+        mouse.textContent = "🐁";
         caught = false;
         mouseX = Math.random() * (window.innerWidth - 50);
         mouseY = Math.random() * (window.innerHeight - 50);
